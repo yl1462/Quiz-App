@@ -18,54 +18,54 @@ const questionsArray = [
     questionChoice: ['Bells', 'Goats', 'Shoes', 'Hats'],
     questionAnswer: 'Bells',
   },
-  //question 3
-  {
-    questionText: 'Looks like the ____ is out of the bag now!',
-    questionChoice: ['Secret', 'Mystery', 'Snake', 'Cat'],
-    questionAnswer: 'Cat',
-  },
-  //question 4
-  {
-    questionText: 'I’m ____ over ____ in love!',
-    questionChoice: ['Face, Foot', 'Head, Heels', 'Head, Bottom', 'Head, Feet'],
-    questionAnswer: 'Head, Heels',
-  },
-  //question 5
-  {
-    questionText: 'I’m as ____ as a clam',
-    questionChoice: ['Calm', 'Sheltered', 'Happy', 'Collected'],
-    questionAnswer: 'Happy',
-  },
-  //question 6
-  {
-    questionText: 'Pardon my ____',
-    questionChoice: ['French', 'Outburst', 'English', 'Forks'],
-    questionAnswer: 'French',
-  },
-  //question 7
-  {
-    questionText: 'I work hard to bring home the ____!',
-    questionChoice: ['Bread', 'Bacon', 'Cash', 'Milk'],
-    questionAnswer: 'Bacon',
-  },
-  //question 8
-  {
-    questionText: 'Are we going to talk about the ____ in the room?',
-    questionChoice: ['Unicorn', 'Dragon', 'Elephant', 'Mouse'],
-    questionAnswer: 'Elephant',
-  },
-  //question 9
-  {
-    questionText: 'Tonight we are going to paint the town ____!',
-    questionChoice: ['Bright', 'Silver', 'Gold', 'Red'],
-    questionAnswer: 'Red',
-  },
-  //question 10
-  {
-    questionText: 'You’re the bee’s ____!',
-    questionChoice: ['Knees', 'Sting', 'Honey', 'Wing'],
-    questionAnswer: 'Knees',
-  },
+  // //question 3
+  // {
+  //   questionText: 'Looks like the ____ is out of the bag now!',
+  //   questionChoice: ['Secret', 'Mystery', 'Snake', 'Cat'],
+  //   questionAnswer: 'Cat',
+  // },
+  // //question 4
+  // {
+  //   questionText: 'I’m ____ over ____ in love!',
+  //   questionChoice: ['Face, Foot', 'Head, Heels', 'Head, Bottom', 'Head, Feet'],
+  //   questionAnswer: 'Head, Heels',
+  // },
+  // //question 5
+  // {
+  //   questionText: 'I’m as ____ as a clam',
+  //   questionChoice: ['Calm', 'Sheltered', 'Happy', 'Collected'],
+  //   questionAnswer: 'Happy',
+  // },
+  // //question 6
+  // {
+  //   questionText: 'Pardon my ____',
+  //   questionChoice: ['French', 'Outburst', 'English', 'Forks'],
+  //   questionAnswer: 'French',
+  // },
+  // //question 7
+  // {
+  //   questionText: 'I work hard to bring home the ____!',
+  //   questionChoice: ['Bread', 'Bacon', 'Cash', 'Milk'],
+  //   questionAnswer: 'Bacon',
+  // },
+  // //question 8
+  // {
+  //   questionText: 'Are we going to talk about the ____ in the room?',
+  //   questionChoice: ['Unicorn', 'Dragon', 'Elephant', 'Mouse'],
+  //   questionAnswer: 'Elephant',
+  // },
+  // //question 9
+  // {
+  //   questionText: 'Tonight we are going to paint the town ____!',
+  //   questionChoice: ['Bright', 'Silver', 'Gold', 'Red'],
+  //   questionAnswer: 'Red',
+  // },
+  // //question 10
+  // {
+  //   questionText: 'You’re the bee’s ____!',
+  //   questionChoice: ['Knees', 'Sting', 'Honey', 'Wing'],
+  //   questionAnswer: 'Knees',
+  // },
 
 ];
 
@@ -74,57 +74,87 @@ let totalNumberOfQuestion = questionsArray.length;
 let totalScore = 0
 
 function startQuiz() {
-  $('start').on('click', function () {
+  $('main').html(
+    //Start Section
+    `<section class='start-section'>
+      <h2>Most people can't get these common figure of speech right, can you?</h2>
+      <h3>People say some weird things y'all!</h3>
+      <button class='start-button' type='button'>
+        <span>We Shall See!</span>
+      </button>
+    </section>`
+  );
+  $('main').on('click', '.start-button',function () {
     console.log('Quiz Starting Now!');
-  })
+    renderQuestion()
+  });
 }
 
-$('.questions').html(
-  //Start Section
-  <section class='start-section'>
-    <h2>Most people can't get these common figure of speech right, can you?</h2>
-    <h3>People say some weird things y'all!</h3>
-    <button class='start-button' type='button'>
-      <span>We Shall See!</span>
-    </button>
-  </section>
-  //Question Section
-  function renderQuestion(){
-    const quizQuestions=`<section class='questions'>
-      <form>
-        <h2>${questionsArray[0].quesitonText}</h2>
-        <label>
-          <input type='radio' name='answer'>${questionsArray[0].questionChoice[0]}
-        </label>
-        <label>
-          <input type='radio' name='answer'>${questionsArray[1].questionChoice[1]}
-        </label>
-        <label> 
-          <input type='radio' name='answer'>${questionsArray[2].questionChoice[2]}
-        </label>
-        <label>   
-          <input type='radio' name='answer'>${questionsArray[3].questionChoice[3]}
-        </label>
-        <button class='turnIn'>Turn in</button>
-      </form>
-    </section>` 
+//Question Section
+function renderQuestion(){
+  const quizQuestions=`<section class='questions'>
+    <form>
+      <h2>${questionsArray[currentQuestionNumber].questionText}</h2>
+      <label>
+        <input type='radio' name='answer'>${questionsArray[currentQuestionNumber].questionChoice[0]}
+      </label>
+      <label>
+        <input type='radio' name='answer'>${questionsArray[currentQuestionNumber].questionChoice[1]}
+      </label>
+      <label> 
+        <input type='radio' name='answer'>${questionsArray[currentQuestionNumber].questionChoice[2]}
+      </label>
+      <label>   
+        <input type='radio' name='answer'>${questionsArray[currentQuestionNumber].questionChoice[3]}
+      </label>
+      <button class='turnIn' type='submit'>Turn in</button>
+    </form>
+  </section>` 
+  $('main').html(quizQuestions)
+}
+
+function nextQuestion(){
+   $('main').on('submit', 'form', function(event) {
+      event.preventDefault();
+      if (currentQuestionNumber === questionsArray.length - 1) {
+        $('form').append(`<h1>Final Page</h1>`);
+        //displayFinalPage();
+      } else {
+        currentQuestionNumber++;
+      }
+      renderQuestion();
+   })   
+}
+
+function displayFinalPage(){
+  console.log("this is the last page.");
+  
+  
+}
+
+// function checkAnswer(){
+//   let userAnswer = $(what they turn in).val();
+//   if (userAnswer[0] === questionsArray[0].questionAnswer[0]) {
+//     totalScore++;
+//     console.log(totalScore)
+//   } else {
+//     console.log(totalScore)
+//   }
+// }
+
+// function questionsDisplay(){
+
+// }
+
+// function restartQuiz(){
+
+// }
+
+$(
+  startQuiz(), 
+  nextQuestion(), 
+  //displayFinalPage()
 )
-
-function checkAnswer(){
-  let userAnswer = $(what they turn in).val();
-  if (userAnswer[0] === questionsArray[0].questionAnswer[0]) {
-    totalScore++;
-    console.log(totalScore)
-  } else {
-    console.log(totalScore)
-  }
-}
-
-
-
-
-
-
 
 
 
@@ -152,5 +182,3 @@ function checkAnswer(){
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
 /********** EVENT HANDLER FUNCTIONS **********/
-
-// These functions handle events (submit, click, etc)
