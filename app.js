@@ -13,7 +13,7 @@ function startQuiz() {
       </button>
     </section>`
   );
-  $('main').on('click', '.start-button', function () {
+  $('main').off().on('click', '.start-button', function () {
     console.log('Quiz Starting Now!');
     renderQuestion();
   });
@@ -21,20 +21,24 @@ function startQuiz() {
 
 //Question Section
 function renderQuestion() {
+  let choice1 = questionsArray[currentQuestionNumber].questionChoice[0]
+  let choice2 = questionsArray[currentQuestionNumber].questionChoice[1]
+  let choice3 = questionsArray[currentQuestionNumber].questionChoice[2]
+  let choice4 = questionsArray[currentQuestionNumber].questionChoice[3]
   const quizQuestions = `<section class='questions'>
     <form>
       <h2>${questionsArray[currentQuestionNumber].questionText}</h2>
       <label>
-        <input type='radio' name='answer'>${questionsArray[currentQuestionNumber].questionChoice[0]}
+        <input type='radio' name='answer' value='${choice1}'/>${choice1}
       </label>
       <label>
-        <input type='radio' name='answer'>${questionsArray[currentQuestionNumber].questionChoice[1]}
+        <input type='radio' name='answer' value='${choice2}'/>${choice2}
       </label>
       <label> 
-        <input type='radio' name='answer'>${questionsArray[currentQuestionNumber].questionChoice[2]}
+        <input type='radio' name='answer' value='${choice3}'/>${choice3}
       </label>
       <label>   
-        <input type='radio' name='answer'>${questionsArray[currentQuestionNumber].questionChoice[3]}
+        <input type='radio' name='answer' value='${choice4}'/>${choice4}
       </label>
       <button class='turnIn' type='submit'>Turn in</button>
     </form>
@@ -42,15 +46,16 @@ function renderQuestion() {
   $('main').html(quizQuestions);
 }
 
-function nextQuestion() {
-  $('main').on('click', 'form', function (event) {
+function submitQuestion() {
+  $('main').on('submit', 'form', function (event) {
     event.preventDefault();
     if (currentQuestionNumber == questionsArray.length - 1) {
       displayFinalPage();
     } else {
-      currentQuestionNumber++;
+      // currentQuestionNumber++;
+      // renderQuestion();
+      checkAnswer()
     }
-    renderQuestion();
   });
 }
 
@@ -60,37 +65,40 @@ function displayFinalPage() {
     `<div>
       <div>
         <fieldset>
-          <legend>You got: ${questionsArray.totalScore}/${questionsArray.length} right!</legend>
+          <legend>You got: ${totalScore}/${questionsArray.length} right!</legend>
         </fieldset>
       </div>
 
       <div>
-        <button type="button" id="restart">Want to Try Again?</button>
+        <button type="button" id="restart" >Want to Try Again?</button>
       </div>
 
     </div>`
   );
-  let currentQuestionNumber = 0;
-  let totalScore = 0;
+  // currentQuestionNumber = 0;
+  // totalScore = 0;
 }
 
-// function checkAnswer() {
-//   let userAnswer = $(what they turn in).val();
-//   if (userAnswer[0] === questionsArray[0].questionAnswer[0]) {
-//     correctAnswer();
-//     totalScore++;
-//     console.log(totalScore);
-//   } else {
-//     wrongAnswer();
-//     console.log(totalScore);
-//   }
-// }
+function checkAnswer() {
+  //$('main').on('click', 'input[type="radio"]', function () {
+    let userAnswer = $('input[type="radio"]:checked').val();
+    console.log(userAnswer)
+    if (userAnswer === questionsArray[currentQuestionNumber].questionAnswer) {
+      correctAnswer();
+      totalScore++;
+      console.log(totalScore);
+    } else {
+      wrongAnswer();
+      console.log(totalScore);
+    }
+ // });
+}
 
 function correctAnswer() {
   $('main').html(
     `
       <h3>You're correct!</h3>
-      <button type="button">Next</button>
+      <button type="button" class="nextQuestion">Next</button>
     `
   );
 }
@@ -99,21 +107,32 @@ function wrongAnswer() {
   $('main').html(
     `
       <h3>Nope! It's ${questionsArray[currentQuestionNumber].questionAnswer}.</h3>
-      <button type="button">Next<//button>
+      <button type="button" class="nextQuestion">Next</button>
     `
   );
 }
 
-function restartQuiz() {
-  $('main').on('click', '#restart', function() {
+function nextQuestion() {
+  $('main').on('click', '.nextQuestion', function() {
+    console.log("next question")
+    currentQuestionNumber++;
     renderQuestion();
+  });
+}
+
+function restartQuiz() {
+  $('main').on('click', '#restart', function () {
+    startQuiz();
   });
 }
 
 $(
   startQuiz(),
-  nextQuestion(),
+  submitQuestion(),
   //displayFinalPage()
+  restartQuiz(),
+  //checkAnswer()
+  nextQuestion()
 )
 
 
