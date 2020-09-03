@@ -49,13 +49,14 @@ function renderQuestion() {
 function submitQuestion() {
   $('main').on('submit', 'form', function (event) {
     event.preventDefault();
-    if (currentQuestionNumber == questionsArray.length - 1) {
-      displayFinalPage();
-    } else {
-      // currentQuestionNumber++;
-      // renderQuestion();
-      checkAnswer()
-    }
+    checkAnswer();
+    // if (currentQuestionNumber == questionsArray.length - 1) {
+    //   displayFinalPage();
+    // } //else {
+    //   // currentQuestionNumber++;
+    //   // renderQuestion();
+    //   checkAnswer()
+    // }
   });
 }
 
@@ -114,8 +115,12 @@ function wrongAnswer() {
 
 function nextQuestion() {
   $('main').on('click', '.nextQuestion', function() {
-    console.log("next question")
+    console.log("next question");
+    if (currentQuestionNumber == questionsArray.length) {
+      displayFinalPage();
+    } else {
     currentQuestionNumber++;
+    }
     renderQuestion();
   });
 }
@@ -123,6 +128,8 @@ function nextQuestion() {
 function restartQuiz() {
   $('main').on('click', '#restart', function () {
     startQuiz();
+    currentQuestionNumber = 0;
+    totalScore= 0;
   });
 }
 
