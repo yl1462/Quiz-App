@@ -13,7 +13,10 @@ function startQuiz() {
       </button>
     </section>`
   );
-  $('main').off().on('click', '.start-button', function () {
+}
+
+function startQuizHandler() {
+   $('main').off().on('click', '.start-button', function () {
     console.log('Quiz Starting Now!');
     renderQuestion();
   });
@@ -61,7 +64,6 @@ function submitQuestion() {
 }
 
 function displayFinalPage() {
-  console.log("this is the last page.");
   $('main').html(
     `<div>
       <div>
@@ -69,11 +71,9 @@ function displayFinalPage() {
           <legend>You got: ${totalScore}/${questionsArray.length} right!</legend>
         </fieldset>
       </div>
-
       <div>
         <button type="button" id="restart" >Want to Try Again?</button>
       </div>
-
     </div>`
   );
   // currentQuestionNumber = 0;
@@ -81,21 +81,18 @@ function displayFinalPage() {
 }
 
 function checkAnswer() {
-  //$('main').on('click', 'input[type="radio"]', function () {
+    console.log('checkAnswer');
     let userAnswer = $('input[type="radio"]:checked').val();
-    console.log(userAnswer)
     if (userAnswer === questionsArray[currentQuestionNumber].questionAnswer) {
       correctAnswer();
       totalScore++;
-      console.log(totalScore);
     } else {
       wrongAnswer();
-      console.log(totalScore);
     }
- // });
 }
 
 function correctAnswer() {
+  console.log('correctAnswer');
   $('main').html(
     `
       <h3>You're correct!</h3>
@@ -105,6 +102,7 @@ function correctAnswer() {
 }
 
 function wrongAnswer() {
+  console.log('wrongAnswer');
   $('main').html(
     `
       <h3>Nope! It's ${questionsArray[currentQuestionNumber].questionAnswer}.</h3>
@@ -113,34 +111,48 @@ function wrongAnswer() {
   );
 }
 
+function updateQuestionAndScore() {
+  $('main').html(
+    `
+      <ul>
+        <li>You're on: ${questionsArray.currentQuestionNumber + 1}/${questionsArray.length}</li>
+        <li>You got $(totalScore)</li>
+    `
+  )
+}
+
 function nextQuestion() {
   $('main').on('click', '.nextQuestion', function() {
     console.log("next question");
-    if (currentQuestionNumber == questionsArray.length) {
+    console.log(currentQuestionNumber);
+    if (currentQuestionNumber === questionsArray.length - 1) {
       displayFinalPage();
     } else {
     currentQuestionNumber++;
-    }
     renderQuestion();
+    }
   });
 }
 
 function restartQuiz() {
   $('main').on('click', '#restart', function () {
-    startQuiz();
+    console.log('restartQuiz');
     currentQuestionNumber = 0;
     totalScore= 0;
+    startQuiz();
   });
 }
 
 $(
   startQuiz(),
+  startQuizHandler(),
   submitQuestion(),
   //displayFinalPage()
   restartQuiz(),
   //checkAnswer()
   nextQuestion()
 )
+
 
 
 
