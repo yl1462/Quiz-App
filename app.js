@@ -16,7 +16,7 @@ function startQuiz() {
 }
 
 function startQuizHandler() {
-   $('main').off().on('click', '.start-button', function () {
+  $('main').off().on('click', '.start-button', function () {
     console.log('Quiz Starting Now!');
     renderQuestion();
   });
@@ -24,11 +24,17 @@ function startQuizHandler() {
 
 //Question Section
 function renderQuestion() {
-  let choice1 = questionsArray[currentQuestionNumber].questionChoice[0]
-  let choice2 = questionsArray[currentQuestionNumber].questionChoice[1]
-  let choice3 = questionsArray[currentQuestionNumber].questionChoice[2]
-  let choice4 = questionsArray[currentQuestionNumber].questionChoice[3]
+  let quizQuestions = getQuizMarkup();
+  $('main').html(quizQuestions);
+}
+
+function getQuizMarkup() {
+  let choice1 = questionsArray[currentQuestionNumber].questionChoice[0];
+  let choice2 = questionsArray[currentQuestionNumber].questionChoice[1];
+  let choice3 = questionsArray[currentQuestionNumber].questionChoice[2];
+  let choice4 = questionsArray[currentQuestionNumber].questionChoice[3];
   const quizQuestions = `<section class='questions'>
+    ${updateQuestionAndScore()}
     <form>
       <h2>${questionsArray[currentQuestionNumber].questionText}</h2>
       <label>
@@ -46,13 +52,14 @@ function renderQuestion() {
       <button class='turnIn' type='submit'>Turn in</button>
     </form>
   </section>`;
-  $('main').html(quizQuestions);
+  return quizQuestions;
 }
 
 function submitQuestion() {
   $('main').on('submit', 'form', function (event) {
     event.preventDefault();
     checkAnswer();
+    
     // if (currentQuestionNumber == questionsArray.length - 1) {
     //   displayFinalPage();
     // } //else {
@@ -81,14 +88,18 @@ function displayFinalPage() {
 }
 
 function checkAnswer() {
-    console.log('checkAnswer');
-    let userAnswer = $('input[type="radio"]:checked').val();
-    if (userAnswer === questionsArray[currentQuestionNumber].questionAnswer) {
-      correctAnswer();
-      totalScore++;
-    } else {
-      wrongAnswer();
-    }
+  console.log('checkAnswer');
+  let userAnswer = $('input[type="radio"]:checked').val();
+  if (!userAnswer) {
+    alert("No Skipping ahead! Please Choose an Option!");
+    return;
+  };
+  if (userAnswer === questionsArray[currentQuestionNumber].questionAnswer) {
+    correctAnswer();
+    totalScore++;
+  } else {
+    wrongAnswer();
+  }
 }
 
 function correctAnswer() {
@@ -112,24 +123,23 @@ function wrongAnswer() {
 }
 
 function updateQuestionAndScore() {
-  $('main').html(
-    `
-      <ul>
-        <li>You're on: ${questionsArray.currentQuestionNumber + 1}/${questionsArray.length}</li>
-        <li>You got $(totalScore)</li>
-    `
-  )
+  return `
+    <ul>
+      <li>You're on: ${currentQuestionNumber + 1}/${questionsArray.length}</li>
+      <li>You got ${totalScore}/${questionsArray.length} right</li>
+    </ul>
+    `;
 }
 
 function nextQuestion() {
-  $('main').on('click', '.nextQuestion', function() {
+  $('main').on('click', '.nextQuestion', function () {
     console.log("next question");
     console.log(currentQuestionNumber);
     if (currentQuestionNumber === questionsArray.length - 1) {
       displayFinalPage();
     } else {
-    currentQuestionNumber++;
-    renderQuestion();
+      currentQuestionNumber++;
+      renderQuestion();
     }
   });
 }
@@ -138,7 +148,7 @@ function restartQuiz() {
   $('main').on('click', '#restart', function () {
     console.log('restartQuiz');
     currentQuestionNumber = 0;
-    totalScore= 0;
+    totalScore = 0;
     startQuiz();
   });
 }
@@ -149,7 +159,7 @@ $(
   submitQuestion(),
   //displayFinalPage()
   restartQuiz(),
-  //checkAnswer()
+  //checkAnswer(),
   nextQuestion()
 )
 
