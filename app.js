@@ -59,14 +59,6 @@ function submitQuestion() {
   $('main').on('submit', 'form', function (event) {
     event.preventDefault();
     checkAnswer();
-    
-    // if (currentQuestionNumber == questionsArray.length - 1) {
-    //   displayFinalPage();
-    // } //else {
-    //   // currentQuestionNumber++;
-    //   // renderQuestion();
-    //   checkAnswer()
-    // }
   });
 }
 
@@ -83,8 +75,6 @@ function displayFinalPage() {
       </div>
     </div>`
   );
-  // currentQuestionNumber = 0;
-  // totalScore = 0;
 }
 
 function checkAnswer() {
@@ -106,8 +96,8 @@ function correctAnswer() {
   console.log('correctAnswer');
   $('main').html(
     `
-      <h3>You're correct!</h3>
-      <button type="button" class="nextQuestion">Next</button>
+      <h3 class="nextQuestion">You're correct!</h3>
+      <button type="button" class="nextQuestionButton">Next</button>
     `
   );
 }
@@ -116,8 +106,8 @@ function wrongAnswer() {
   console.log('wrongAnswer');
   $('main').html(
     `
-      <h3>Nope! It's ${questionsArray[currentQuestionNumber].questionAnswer}.</h3>
-      <button type="button" class="nextQuestion">Next</button>
+      <h3 class="nextQuestion">Nope! It's ${questionsArray[currentQuestionNumber].questionAnswer}.</h3>
+      <button type="button" class="nextQuestionButton">Next</button>
     `
   );
 }
@@ -157,9 +147,7 @@ $(
   startQuiz(),
   startQuizHandler(),
   submitQuestion(),
-  //displayFinalPage()
   restartQuiz(),
-  //checkAnswer(),
   nextQuestion()
 )
 

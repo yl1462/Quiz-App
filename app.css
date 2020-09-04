@@ -1,6 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap');
 
 body {
-  background-color:#ebebd3;
+  /* background-color:#fdfcdc; */
+  color: #4d7298;
   font-family: 'Lemonada', cursive;
+  background-image: radial-gradient(#fdfcdc, #bee3db);
+}
+
+h1 {
+  text-align:center;
+  /* background-color: #bee3db; */
+  padding:30px;
+  margin:0;
+  font-size: 35px;
+}
+
+h2, h3, p {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px 25px;
+  margin: 10px auto;
+}
+
+ul {
+  margin: auto 50px;
+  line-height: 45px;
+  list-style-type: none;
+  padding: 15px;
+}
+
+form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-items: center;
+  align-items: flex-start;
+  padding: 10px 25px;
+  margin: 10px auto;
+}
+
+button {
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 50%;
+  border: #f7d9c4 solid 1px;
+  background-color: #c6def1;
+  cursor: pointer;
+  color: #03045e;
+}
+
+button:active {
+  background-color: #2a9d8f;
+  color: #e9c46a;
 }
