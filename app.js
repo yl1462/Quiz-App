@@ -11,6 +11,7 @@ function startQuiz() {
       <button class='start-button' type='button'>
         <span>We Shall See!</span>
       </button>
+      <img src="image/brainTongueStickingOut.PNG" alt="brain Sticking Out Tongue" class="image">
     </section>`
   );
 }
@@ -66,9 +67,8 @@ function displayFinalPage() {
   $('main').html(
     `<div>
       <div>
-        <fieldset>
-          <legend>You got: ${totalScore}/${questionsArray.length} right!</legend>
-        </fieldset>
+        <h2 id="finalPageH2">You got: ${totalScore}/${questionsArray.length} right!</h2>
+        <img src="image/brain-exercising.PNG" alt="exercising brain" class="image">
       </div>
       <div>
         <button type="button" id="restart" >Want to Try Again?</button>
@@ -96,8 +96,8 @@ function correctAnswer() {
   console.log('correctAnswer');
   $('main').html(
     `
-      <h3 class="nextQuestion">You're correct!</h3>
-      <button type="button" class="nextQuestionButton">Next</button>
+      <h3>You're correct!</h3>
+      <button type="button" class="nextQuestion">Next</button>
     `
   );
 }
@@ -106,8 +106,8 @@ function wrongAnswer() {
   console.log('wrongAnswer');
   $('main').html(
     `
-      <h3 class="nextQuestion">Nope! It's ${questionsArray[currentQuestionNumber].questionAnswer}.</h3>
-      <button type="button" class="nextQuestionButton">Next</button>
+      <h3>Nope! It's ${questionsArray[currentQuestionNumber].questionAnswer}.</h3>
+      <button type="button" class="nextQuestion">Next</button>
     `
   );
 }
@@ -115,8 +115,8 @@ function wrongAnswer() {
 function updateQuestionAndScore() {
   return `
     <ul>
-      <li>You're on: ${currentQuestionNumber + 1}/${questionsArray.length}</li>
-      <li>You got ${totalScore}/${questionsArray.length} right</li>
+      <li>You're on Question: ${currentQuestionNumber + 1}/${questionsArray.length}.</li>
+      <li>You got ${totalScore}/${questionsArray.length} right.</li>
     </ul>
     `;
 }

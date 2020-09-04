@@ -1,30 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kufam:wght@800&display=swap');
 
 body {
   /* background-color:#fdfcdc; */
-  color: #4d7298;
+  color: #ffdd4a;
   font-family: 'Lemonada', cursive;
-  background-image: radial-gradient(#fdfcdc, #bee3db);
+  background-image: linear-gradient(to right, #000000, #14213d, #14213d, #000000);
+  flex-flow: row wrap;
+  line-height: 45px;
+}
+
+.image {
+  width: 200px;
+  display: flex;
+  margin: auto;
+  padding: 35px;
 }
 
 h1 {
   text-align:center;
-  /* background-color: #bee3db; */
-  padding:30px;
-  margin:0;
-  font-size: 35px;
+  padding: 3px;
+  margin: 25px 9px;
+  font-size: 25px;
+  border: #c70bd4 solid;
+  border-radius: 13%;
+  -webkit-text-stroke: 1px #74e6ff;
+  color: transparent;
+  font-family: 'Kufam', cursive;
 }
 
-h2, h3, p {
+h2, h3 {
   display: flex;
-  flex-flow: row wrap;
-  padding: 10px 25px;
+  padding: 25px;
   margin: 10px auto;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+#finalPageH2 {
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  font-size: 15px;
+  display: block;
+  text-align: center;
 }
 
 ul {
   margin: auto 50px;
-  line-height: 45px;
+  /* line-height: 45px; */
   list-style-type: none;
   padding: 15px;
 }
@@ -38,17 +66,72 @@ form {
   margin: 10px auto;
 }
 
+label {
+  padding-left: 75px;
+}
+
+input {
+  margin: 15px;
+}
+
 button {
   margin: 10px auto;
   padding: 15px;
   border-radius: 50%;
-  border: #f7d9c4 solid 1px;
-  background-color: #c6def1;
+  border: #e9c46a solid 7px;
+  background-color: #004e64;
   cursor: pointer;
-  color: #03045e;
+  color: #e9c46a;
+  display: block;
 }
 
 button:active {
   background-color: #2a9d8f;
   color: #e9c46a;
 }
+
+@media screen and (min-width: 600px) {
+  h1 {
+    font-size: 40px;
+    padding: 15px;
+    margin-top: 30px;
+    -webkit-text-stroke: 1.5px #74e6ff;
+    border-width: 10px;
+  }
+
+  h2, h3 {
+    display: block;
+    text-align: center;
+    padding: 50px;
+  }
+
+  h2 {
+    font-size: 33px;
+  }
+
+  h3 {
+    font-size: 27px;
+  }
+
+  .image{
+    padding: 100px;
+    width: 300px;
+  }
+
+  button {
+    font-size: 25px;
+  }
+
+  ul {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  label {
+    align-self: center;
+    padding: 0px;
+    font-size: 27px;
+    line-height: 75px;
+  }
+}
+

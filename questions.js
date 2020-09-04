@@ -19,52 +19,52 @@ const questionsArray = [
     questionAnswer: 'Bells',
   },
   // //question 3
-  // {
-  //   questionText: 'Looks like the ____ is out of the bag now!',
-  //   questionChoice: ['Secret', 'Mystery', 'Snake', 'Cat'],
-  //   questionAnswer: 'Cat',
-  // },
-  // //question 4
-  // {
-  //   questionText: 'I’m ____ over ____ in love!',
-  //   questionChoice: ['Face, Foot', 'Head, Heels', 'Head, Bottom', 'Head, Feet'],
-  //   questionAnswer: 'Head, Heels',
-  // },
-  // //question 5
-  // {
-  //   questionText: 'I’m as ____ as a clam',
-  //   questionChoice: ['Calm', 'Sheltered', 'Happy', 'Collected'],
-  //   questionAnswer: 'Happy',
-  // },
-  // //question 6
-  // {
-  //   questionText: 'Pardon my ____',
-  //   questionChoice: ['French', 'Outburst', 'English', 'Forks'],
-  //   questionAnswer: 'French',
-  // },
-  // //question 7
-  // {
-  //   questionText: 'I work hard to bring home the ____!',
-  //   questionChoice: ['Bread', 'Bacon', 'Cash', 'Milk'],
-  //   questionAnswer: 'Bacon',
-  // },
-  // //question 8
-  // {
-  //   questionText: 'Are we going to talk about the ____ in the room?',
-  //   questionChoice: ['Unicorn', 'Dragon', 'Elephant', 'Mouse'],
-  //   questionAnswer: 'Elephant',
-  // },
-  // //question 9
-  // {
-  //   questionText: 'Tonight we are going to paint the town ____!',
-  //   questionChoice: ['Bright', 'Silver', 'Gold', 'Red'],
-  //   questionAnswer: 'Red',
-  // },
-  // //question 10
-  // {
-  //   questionText: 'You’re the bee’s ____!',
-  //   questionChoice: ['Knees', 'Sting', 'Honey', 'Wing'],
-  //   questionAnswer: 'Knees',
-  // },
+  {
+    questionText: 'Looks like the ____ is out of the bag now!',
+    questionChoice: ['Secret', 'Mystery', 'Snake', 'Cat'],
+    questionAnswer: 'Cat',
+  },
+  //question 4
+  {
+    questionText: 'I’m ____ over ____ in love!',
+    questionChoice: ['Face, Foot', 'Head, Heels', 'Head, Bottom', 'Head, Feet'],
+    questionAnswer: 'Head, Heels',
+  },
+  //question 5
+  {
+    questionText: 'I’m as ____ as a clam',
+    questionChoice: ['Calm', 'Sheltered', 'Happy', 'Collected'],
+    questionAnswer: 'Happy',
+  },
+  //question 6
+  {
+    questionText: 'Pardon my ____',
+    questionChoice: ['French', 'Outburst', 'English', 'Forks'],
+    questionAnswer: 'French',
+  },
+  //question 7
+  {
+    questionText: 'I work hard to bring home the ____!',
+    questionChoice: ['Bread', 'Bacon', 'Cash', 'Milk'],
+    questionAnswer: 'Bacon',
+  },
+  //question 8
+  {
+    questionText: 'Are we going to talk about the ____ in the room?',
+    questionChoice: ['Unicorn', 'Dragon', 'Elephant', 'Mouse'],
+    questionAnswer: 'Elephant',
+  },
+  //question 9
+  {
+    questionText: 'Tonight we are going to paint the town ____!',
+    questionChoice: ['Bright', 'Silver', 'Gold', 'Red'],
+    questionAnswer: 'Red',
+  },
+  //question 10
+  {
+    questionText: 'You’re the bee’s ____!',
+    questionChoice: ['Knees', 'Sting', 'Honey', 'Wing'],
+    questionAnswer: 'Knees',
+  },
 
 ];
