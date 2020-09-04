@@ -66,6 +66,12 @@ form {
   margin: 10px auto;
 }
 
+.formDiv {
+  display: flex;
+  flex-flow: row wrap;
+
+}
+
 label {
   padding-left: 75px;
 }
@@ -127,6 +133,10 @@ button:active {
     text-align: center;
   }
 
+  .formDiv {
+    align-self: center;
+  }
+
   label {
     align-self: center;
     padding: 0px;
@@ -134,4 +144,3 @@ button:active {
     line-height: 75px;
   }
 }
-
