@@ -11,7 +11,7 @@ function startQuiz() {
       <button class='start-button' type='button'>
         <span>We Shall See!</span>
       </button>
-      <img src="image/brainTongueStickingOut.PNG" alt="brain Sticking Out Tongue" class="image">
+      <img src="image/brainTongueStickingOut.png" alt="brain Sticking Out Tongue" class="image">
     </section>`
   );
 }
@@ -68,7 +68,7 @@ function displayFinalPage() {
     `<div>
       <div>
         <h2 id="finalPageH2">You got: ${totalScore}/${questionsArray.length} right!</h2>
-        <img src="image/brain-exercising.PNG" alt="exercising brain" class="image">
+        <img src="image/brain-exercising.png" alt="exercising brain" class="image">
       </div>
       <div>
         <button type="button" id="restart" >Want to Try Again?</button>
