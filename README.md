@@ -1,3 +1,3 @@
-Quiz App for Thinkful
-Firgure of Speech Quiz 
+Quiz App for Thinkful<br>
+Firgure of Speech Quiz<br> 
 Built with HTML, CSS, and JQuery.
